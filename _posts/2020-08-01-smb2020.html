@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "SMB2020"
+category: "Research"
+featured: true
+date:   2020-08-01 12:00:00 -0400
+thumb: '/img/posts/esmb.png'
+author: "Jeffrey West"
+summary: "I served on the organizing committee of the Society for Mathematical Biology's annual meeting in 2020."
+---
+
+
+<div class="jumbotron p-3 p-md-5 text-white rounded blog-panel">
+  <div class="col-md-12 px-0">
+    <h1 class="display-4 font-italic">SMB2020</h1>
+    <p class="lead mb-0"><a href="https://smb2020.org/" class="text-white font-weight-bold" target="_blank">Visit smb2020.org</a>.</p>
+  </div>
+</div>
+
+
+
+The Society of Mathematical Biology host its annual meeting online during the week of August 17 through 20, 2020. I served on the organizing committee of the Society for Mathematical Biology's annual meeting in 2020. My role was to design the website, which can be found at <a href="https://smb2020.org/">smb2020.org/</a>.
+
+</br></br>
+
+<h3>Behind the scenes</h3>
+A few 'behind the scenes' looks: I used Jekyll HTML templating to build the site. It's pretty awesome. You write little bits of HTML, and just {% raw %}{% include ___ %}{% endraw %} whatever building block you need.
+
+<img class="post-img" src="{{ '/img/inserts/smb/1.jpg'  | prepend: site.baseurl | replace: '//', '/' }}" alt="SMB jekyll tutorial image 1">
+
+That's nice, but the real power = loops to generate HTML based on data. Check if poster, minisymposium, etc. Allow the user to filter between "all" posters or a specific subgroup. Autogenerate a custom URL (based on presenter's name). If no title, then it's "TBD".
+<img class="post-img" src="{{ '/img/inserts/smb/2.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="SMB jekyll tutorial image 1">
+
+Then I wrote some Matlab code to read in excel files from all submitted abstracts, and format nicely in Jekyll's preferred format.
+<img class="post-img" src="{{ '/img/inserts/smb/3.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="SMB jekyll tutorial image 1">
+
+It's also ok to write atrocious nested for-loops... Jekyll generates static HTML pages only once (on your local machine). It took ~5 minutes to generate the ~500 abstract pages, But the actual website never loops/searches anything! Fast as static HTML!
+<img class="post-img" src="{{ '/img/inserts/smb/4.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="SMB jekyll tutorial image 1">
+
+
+
+
+
+
+
+
+

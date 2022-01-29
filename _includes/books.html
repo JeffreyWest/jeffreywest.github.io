@@ -1,0 +1,29 @@
+</br>
+</br>
+<div class="row">
+  <div class="col-lg-12 col-md-12 mx-auto article-list">
+		<div class="card callout box-shadow">
+			<div class="card-body">
+				<strong class="d-inline-block mb-2 text-info">Advertisement</strong>
+			
+				<a href="{{ include.book_link }}" target="_blank">
+			  	<h5 class="card-title mb-0">{{ include.book_title }}</h5>
+				</a>
+				
+			    <h6 class="post-subtitle">{{ include.book_author }}</h6>
+<!-- 				<p class="card-text"></p> -->
+					<small>{{ include.book_desc }}</small>
+			
+			</div>
+			
+				<img class="card-img-top" src="{{ include.book_img | prepend: site.baseurl | replace: '//', '/' }}" alt="Book">
+		</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 mx-auto text-center">
+		<small class="text-center">Consider buying the book to help support site maintenance expenses. </br>I've read and personally recommend each.</small>
+  </div>
+</div>
+</br>
+</br>

@@ -1,0 +1,164 @@
+---
+layout: default
+---
+
+	<!-- Page Header -->
+
+<!--   <div class="container"> -->
+	  <div class="jumbotron p-3 p-md-5 text-white rounded top-panel">
+	    <div class="col-md-12 px-0">
+	      <h1 class="display-4 font-italic">The MathOnco weekly email newsletter</h1>
+	      <p class="lead my-3">Important updates in the field of mathematical oncology into one, distilled form of communication. Is the field of mathematical oncology ready for the next (r)evolution? Let's begin.</p>
+	      <p class="lead mb-0"><a href="http://mathematical-oncology.org/newsletter" class="text-white font-weight-bold" target="_blank">Sign up...</a></p>
+	    </div>
+	  </div>
+	
+	  <main role="main" class="container">
+		  <div class="row">
+      	<div class="col-lg-12 col-md-12 mx-auto">
+					<h3 class="pb-3 mb-4 font-italic border-bottom"> Welcome </h3>
+		  
+		  
+			    <div class="row">
+			      <div class="col-lg-6 blog-main">
+			        <div class="blog-post">
+			          <p class="blog-post-meta">Last updated: Feb. 19, 2021 by <a href="https://twitter.com/mathoncbro" target="_blank">Jeffrey</a></p>
+			
+			          <p>I'm currently a postdoc at Moffitt Cancer Center, studying under <a href="http://labpages.moffitt.org/andersona/">Sandy Anderson</a>. At Moffitt his research focuses are two-fold: 1) developing clinically-relevant mathematical models of multiple drug adaptive therapies and 2) better understanding the impact of spatial competition in tumor heterogeneity.</p>
+			          
+			        </div><!-- /.blog-post -->	
+			      </div><!-- /.blog-main -->
+			      <div class="col-lg-6 blog-main">
+			      	<div class="card box-shadow">
+							  <div class="card-body">
+		            	<strong class="d-inline-block mb-2 text-success">Research</strong>
+		
+									<!-- Title, subtitle -->
+									<a href="./publications.html">
+			            	<h5 class="card-title mb-0">Publications</h5>
+		            	</a>
+		              <h6 class="post-subtitle">Selected preprints & publications</h6>
+		                          
+									<p class="card-text">View my CV.</p>
+									
+							  </div>
+							  	<img class="card-img-top" src="{{ "/img/posts/jeffrey.png" | prepend: site.baseurl | replace: '//', '/' }}" alt="Card image cap">						
+							</div>
+			      </div>
+			    </div><!-- /.row -->
+      	</div>
+		  </div>
+	  </main>
+<!--   </div> -->
+<!--   <div class="container"> -->
+
+	    
+	        
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 mx-auto article-list">
+
+        <!-- Featured Post List -->
+        <h3 class="pb-3 mb-4 font-italic border-bottom"> Featured: </h3>
+        {% assign iterator = 1 %}
+        {% assign row_is_ended = 1 %}
+        
+        {% for post in site.posts limit : 100 %}
+        	
+		          	{% if post.hide %}
+		          	{% else %}
+			          	{% if post.featured %}
+			          	
+			          		{% assign remainder = iterator | modulo: 2 %}
+			          		
+			          		{% if remainder == 1 %}									
+											<div class="row">
+					          {% endif %}
+			          	
+									  <div class="col-lg-6 mb-3">
+										  <article class="post-preview">
+							            {% include card_callout.html post=post %}
+							            {% assign iterator = iterator | plus:1 %}
+							            {% assign row_is_ended = 0 %}						          
+							        </article>
+									  </div> <!-- end col -->
+									  
+									  {% if remainder == 1 %}
+	
+						        {% else %}
+											<!-- if row hasn't been ended, end it bc this is 2nd post of 2 -->
+											{% if row_is_ended == 0 %}
+					          		</div> <!-- end rowL -->
+					          		{% assign row_is_ended = 1 %}
+					          	{% endif %}
+								    {% endif %}								  
+									{% endif %} <!-- end featured -->
+									
+								{% endif %}
+													    
+					    <!-- Check on the last iteration if row has been ended. -->
+					    {% if forloop.last == true %}
+					    	{% if row_is_ended == 0 %}
+		          		</div> <!-- end rowL -->
+		          	{% endif %}
+						  {% endif %}
+					    
+					      							  			  
+        {% endfor %}
+    
+    	</div>
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-12 col-md-12 mx-auto article-list">
+        
+        <!-- Atomic Post List -->
+        <h3 class="pb-3 mb-4 font-italic border-bottom"> Atomic Posts: </h3>
+        {% assign iterator = 1 %}
+        {% assign row_is_ended = 1 %}
+        
+        {% for post in site.posts limit : 100 %}
+        	
+		          	{% if post.hide %}
+		          	{% else %}
+			          	{% if post.featured %}
+			          	{% else %}
+			          		{% assign remainder = iterator | modulo: 2 %}
+			          		
+			          		{% if remainder == 1 %}									
+											<div class="row">
+					          {% endif %}
+			          	
+									  <div class="col-lg-6 mb-3">
+										  <article class="post-preview">
+							            {% include card_callout.html post=post %}
+							            {% assign iterator = iterator | plus:1 %}
+							            {% assign row_is_ended = 0 %}						          
+							        </article>
+									  </div> <!-- end col -->
+									  
+									  {% if remainder == 1 %}
+	
+						        {% else %}
+											<!-- if row hasn't been ended, end it bc this is 2nd post of 2 -->
+											{% if row_is_ended == 0 %}
+					          		</div> <!-- end rowL -->
+					          		{% assign row_is_ended = 1 %}
+					          	{% endif %}
+								    {% endif %}								  
+									{% endif %} <!-- end featured -->
+								{% endif %} <!-- end hide -->
+										    
+					    <!-- Check on the last iteration if row has been ended. -->
+					    {% if forloop.last == true %}
+					    	{% if row_is_ended == 0 %}
+		          		</div> <!-- end rowL -->
+		          	{% endif %}
+						  {% endif %}
+					    
+					      							  			  
+        {% endfor %}
+			</div>
+    </div>  
+  </div>    
+      

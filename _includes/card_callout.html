@@ -1,0 +1,45 @@
+
+<div class="card box-shadow">
+  <div class="card-body">
+  	<strong class="d-inline-block mb-2 text-{{ include.post.category | remove: " " | downcase }}">{{ include.post.category }}</strong>
+
+
+		<!-- Title, subtitle -->
+		{% if include.post.link %}
+			<a href="{{ include.post.link }}" target="_blank">
+	    	<h5 class="card-title mb-0"> {{ include.post.title }} </h5>
+	  	</a>
+		{% else %}
+			<a href="{{ include.post.url | prepend: site.baseurl | replace: '//', '/' }}">
+	    	<h5 class="card-title mb-0"> {{ include.post.title }} </h5>
+	  	</a>
+  	{% endif %}
+  	
+  	{% if include.post.subtitle %}
+      <h6 class="post-subtitle">{{ include.post.subtitle }}</h6>
+    {% endif %}
+    
+<!-- 													<div class="mb-1 text-muted">Written by {{ include.post.author }}</div> -->
+  	
+		<small>{{ include.post.date | date: '%B %d, %Y' }}; {{ include.post.author }}</small>
+  
+		<p class="card-text">{{ include.post.summary | strip_html | truncatewords: 25 }}</p>
+
+  				
+		<!-- Tags -->
+		<span>
+			{% for tag in include.post.tags %}
+			<a href="/tags/{{ tag | remove: " " | prepend: site.baseurl | replace: '//', '/' }}">
+      	<strong class="d-inline-block mb-2 text-info">#{{ tag }}</strong>
+			</a>
+      {% endfor %}
+		</span>
+  </div>
+  
+  {% if include.post.thumb %}
+  	<img class="card-img-top" src="{{ include.post.thumb | prepend: site.baseurl | replace: '//', '/' }}" alt="Card image cap">
+	{% else %}
+  	<img class="card-img-top" src="{{ "/img/posts/default_thumb.png" | prepend: site.baseurl | replace: '//', '/' }}" alt="Card image cap">
+	{% endif %}
+													
+</div>

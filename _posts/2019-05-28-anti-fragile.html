@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "The fragility of cancer treatment"
+category: "Research"
+subtitle: "... or lack thereof"
+date:   2019-05-28 12:00:00 -0400
+author: "Jeffrey West"
+tags: [Antifragile, Dose Response]
+summary: "Antifragile is a theory that might help with cancer."
+book_author: "James DeGregori"
+book_title: "Adaptive Oncogenesis"
+book_img: '/img/books/adaptive_onco.jpg'
+book_desc: "Popular understanding holds that genetic changes create cancer. James DeGregori uses evolutionary principles to propose a new way of thinking about cancer’s occurrence. Cancer is as much a disease of evolution as it is of mutation, one in which mutated cells outcompete healthy cells in the ecosystem of the body’s tissues. His theory ties cancer’s progression, or lack thereof, to evolved strategies to maximize reproductive success."
+book_link: 'https://www.amazon.com/gp/product/0674545397/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0674545397&linkCode=as2&tag=jeffreywest-20&linkId=fc2ff9f497ca45cf972c69ccb0426a17'
+---
+
+This story begins the same way all great stories begin: on Twitter (ha…). 
+<br />
+<br />
+Last fall, as my ten-year high school reunion fast was approaching I reached out to one of my classmates on Twitter, which led to a few intriguing phone calls. Long story short, our conversation eventually led us to trade book recommendations. He recommended a few books by <a href="https://twitter.com/nntaleb/">Nassim Taleb</a>: a well-known mathematician, author, and “uncertainty” guru. 
+<br />
+<br />
+Taleb has a series of books on topics like luck, uncertainty, probability, human error, risk, and decision-making (e.g. Fooled by Randomness; The Black Swan). His latest explores natural systems which inherently benefit from disorder. He coins the term “anti-fragile” to describe these systems that aren’t just robust to variance, but derive increased benefit!
+<br />
+<br />
+After dutifully following Taleb on Twitter (still waiting for my #FollowBack, alas…), I see him retweet a <a href="https://www.wired.com/story/cancer-treatment-darwin-evolution/">Wired article</a> which describes ongoing adaptive therapy trials at Moffitt, noting that adaptive cancer therapy follows the pattern of anti-fragile systems. 
+
+<img class="post-img" src="{{ '/img/inserts/af_image1.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 1">
+
+Adaptive therapy has the potential to shift the current paradigm of cancer treatment. Although it’s gaining increased interest, it’s intriguing to see how quickly Taleb picked up on the concept, adding his hearty “it makes sense to me!” (of course, I paraphrase..)
+<br />
+<br />
+So naturally I downloaded Taleb's anti-fragility <a href="https://arxiv.org/abs/1808.00065">preprint</a> and I will explain the concept of anti-fragility below, and speculate how it may relate to adaptive cancer therapy. Let’s begin.
+<br />
+<br />
+<h2 class="section-heading">Random dosing strategies</h2>
+Below, we have patient tumor volume response, \(v(t)\), (left) to two dosing strategies (right). Rather than a pre-planned prescribed schedule we will draw random numbers subject to a probability distribution function, which gives us the probability of selecting a given dose, x: \(P(x)\).
+<br />
+<br />
+The red dosing strategy is a narrow distribution \((\mu = 0.7; \sigma = 0.01)\). This results in a slow, but steady decline in tumor growth. Increasing the variance \((\mu = 0.7; \sigma = 0.2)\) leads to an overall improved outcome at the end of 20 months, but short term tumor growth (e.g., see t = 4).
+
+<img class="post-img" src="{{ '/img/inserts/af_image3.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 2">
+
+With identical cumulative dose delivered over time, an improved response is shown for the \(P(x)\) with increased variance. Here, the system can be called “anti-fragile” because benefit is derived from increased disorder. 
+<br />
+<br />
+But let’s turn to some mathematical underpinnings of this anti-fragility concept. We can predict how variance in dosing affects tumor response by observing the curvature of dose response curves. 
+<br />
+<br />
+But first, let's consider a single cycle of therapy, below. Red shows the baseline: constant dose with zero variance in dose over time. Compare this to identical cumulative dose with increased variance (green).  Here is the key idea: we can use a constant dose as a baseline to compare dosing strategies with increased variance. 
+
+<img class="post-img" src="{{ '/img/inserts/af_image2.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 3">
+
+
+<h2 class="section-heading">Convexity & anti-fragile tumors</h2>
+Let \(S(x)\) represent a dose response function that governs tumor response where \(S(x) = v(t=0) – v(t = T)\). In this way, increased \(S(x)\) represents more tumor kill. We want to compare response for a constant dose \((x^*)\) to a dosing schedule which half time a little less \((x^* - \Delta x)\) and half time a little more \((x^* + \Delta x)\).
+
+<img class="post-img" src="{{ '/img/inserts/af_image4.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 4">
+
+It can be shown that the second schedule (with higher dose variance) outperforms the constant dose if the curvature is positive.
+<br />
+<br />
+This strikes me as a useful concept for 3 reasons:
+<ol>
+	<li>Anti-fragility allows us to determine if there an exists an improved schedule relative to the baseline of constant dose (holding cumulative dose constant).</li>
+	<li>In general, sigmoidal dose-response curves should be expected to have convex AND concave regions. Sigmoidal dose-response curves are ubiquitous in medicine.</li>
+	<li>It transforms complex dose response into regions of binary values: benefit or harm.</li>
+</ol>
+<br />
+The first point is a practical one: it is likely easier to state whether an improved schedule <em>exists</em> (compared to baseline) than to determine the exact patient-specific optimal scenario. The second point proves the utility of this idea in cancer care: the curvature of cancer drug dose response should generally be mathematically “interesting.” The last point is also practical: dimensionality reduction.
+<br />
+<br />
+My hope is that it should not be too difficult to extend this analysis to compare dosing strategies with varied cumulative dose. In other words, if the curvature of \(S(x)\) is convex, can we increase variance and decrease dose to come out even? We also need to extend such analyses to include the effect of resistance... but that's for another blog post!
+
+{% include books.html 
+	book_link="https://www.amazon.com/gp/product/0812979680/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0812979680&linkCode=as2&tag=jeffreywest-20&linkId=7a8fc638cce2c5f096fdd7ccd568eddf" 
+	book_title="Antifragile"
+	book_desc="Things That Gain from Disorder"
+	book_author="Nassim Nicholas Taleb"
+	book_img="/img/books/antifragile.png"
+%}
+
+
+
+
+
+
+

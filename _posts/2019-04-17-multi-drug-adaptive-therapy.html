@@ -1,0 +1,69 @@
+---
+layout: post
+title:  "Adaptive therapy with multiple treatments."
+category: "Research"
+subtitle: "Two evolutionary paradigms"
+date:   2019-04-17 01:00:00 -0400
+tags: [Adaptive Therapy]
+summary: "Providing a path forward."
+background: '/img/posts/cancer.png'
+author: "Jeffrey West"
+---
+
+<p>One of my driving interests during my time at Moffitt has been adaptive therapy. But more than that, I’m interested in extending these theories to administer <strong>multiple</strong> treatments adaptively. The complexity increases exponentially with each additional treatment considered. Take the schematic, below, which shows two possible multi-treatment adaptive therapy schedules. 
+
+<img class="post-img" src="{{ '/img/inserts/adaptive1.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 1">
+
+
+<p>Top panel: we might design an adaptive schedule for a single drug (purple), wait until drug 1 resistance almost emerges (five doses later), then administer the second drug (orange) adaptively. Bottom panel: alternatively, we might give a combination treatment adaptively, until a doubly-resistant subpopulation emerges.
+
+<h2 class="section-heading">Two paradigms for multi-treatment adaptive therapy</h2>
+<p>The differences between the approach are evident in the timing of each adaptive dose. In the first example, the timing between doses depends on the efficacy of a single drug. In the second, dose timing depends on total efficacy of combined purple and orange treatments, presumably faster than a single adaptive dose.
+
+<p>In this blog post, I review two paradigms to aid our pursuit of designing adaptive schedules with multiple treatments. The first, “<a href="http://clincancerres.aacrjournals.org/content/early/2019/04/16/1078-0432.CCR-19-0006">primary-secondary</a>” approach primarily relies on a single drug administered adaptively, but adds a secondary treatment with a slight delay after each adaptive dose. A second approach steers tumor evolution into “<a href="https://www.biorxiv.org/content/10.1101/476507v4">cycles</a>,” returning the tumor back to its original pre-treatment state, regardless of tumor burden.
+
+<h2 class="section-heading">Primary – Secondary Evolutionary Adaptive Therapy</h2>
+<p>Single-treatment adaptive therapy has shown promise in delaying the onset of resistance, yet resistance may still eventually occur. The “Primary-Secondary” approach utilizes a well-timed secondary drug to mitigate against the inevitable emergence of resistance to primary treatment. 
+
+<p>In the case of metastatic castrate resistant prostate cancer (mCRPC), the primary drug is Abiraterone, administered adaptively: on treatment until 50% reduction in burden biomarker (PSA), then off treatment until original burden levels. Below, we present two patients who have undergone this adaptive schedule, but PSA levels are no longer controlled after 2 doses (patient 1010) and 8 doses (patient 1006). Fitting a model to patient data and using identical initial conditions to seed the primary-secondary approach allows us to predict ‘days gained’ through the well-timed administration of docetaxel. 
+ 
+<img class="post-img" src="{{ '/img/inserts/adaptive2.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 2">
+<p>The purpose of this “secondary” docetaxel is to suppress resistant subpopulations that emerge little-by-little during each subsequent adaptive dose. Rather than indiscriminately determine the optimal timing of docetaxel throughout the entire course of treatment, we narrow our focus to the optimal timing within a single adaptive dose (off, then on abiraterone; see below). 
+<img class="post-img" src="{{ '/img/inserts/adaptive3.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 3">
+
+<p>An optimal treatment will target the fast proliferating resistant (yellow) subpopulation while not affecting cell types which are sensitive to the primary treatment. The lower panel shows the percent resistance after a single cycle. The optimal timing of secondary Docetaxel occurs just after the primary dose, after the primary Abiraterone targets sensitive (blue, red) cell types, and the resistant (yellow) is maximally proliferating.
+
+<h2 class="section-heading">Evolutionary cycles</h2>
+Another strategy for multi-drug adaptive therapies is called evolutionary cycles, first introduced by Paul Newton, <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022404">here</a> and extended to prostate cancer in our preprint <a href="https://www.biorxiv.org/content/10.1101/476507v4">here</a>.
+ 
+<img class="post-img" src="{{ '/img/inserts/adaptive4.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 4">
+
+<p>A cycle is defined as a treatment regimen that steers the tumor into periodic and repeatable temporal dynamics of tumor composition. As seen in the figure above, a weekly biopsy shows the frequencies (pie charts) of 4 phenotypes (blue, green, red, yellow) in the evolving tumor over time. At each time step, the state of the tumor is given by a vector, x, indicating the frequency of each cell type composing the tumor. In this example, the fifth week produces a tumor composition, x, which is approximately equivalent to the tumor composition at the start of therapy (x5 ≈ x1). Theoretically, such cycles could be repeated ad infinitum to steer and trap tumor evolution in a repeatable (and controllable) cycle.
+
+
+<h2 class="section-heading">Adapting to tumor adaptations</h2>
+<p>I think a huge key moving forward will be remembering that each treatment administered inevitably has an evolutionary fallback (resistance), but each resistance mechanism carries along constraints. As the tumor adapts to treatment, so also do its constraints and advantages ebb and flow.
+
+<blockquote class="blockquote">
+“At a minimum, in explaining evolutionary pathways through time, the <strong>constraints</strong> imposed by history rise to equal prominence with the immediate <strong>advantages</strong> of adaptation." <br>
+- Stephen J Gould –
+</blockquote><br>
+
+<p>We likely have many unexplored paradigms for the evolutionary treatment of tumors. For example, others have proposed <a href="https://pubs.acs.org/doi/abs/10.1021/mp200458e">evolutionary double-binds</a> or a <a href="https://www.preprints.org/manuscript/201902.0011/v1">first-strike-second-strike</a> paradigm. Historically, the problem of drug resistance has often enlisted the help of mathematical modeling in designing optimal therapy schedules, and I see no sign of that trend diminishing.
+
+{% include books.html 
+	book_author="Ed Yong"
+	book_title="I Contain Multitudes"
+	book_img='/img/books/multitudes.png'
+	book_desc='"In I Contain Multitudes, Yong synthesizes literally hundreds and hundreds of papers, but he never overwhelms you with the science. He just keeps imparting one surprising, fascinating insight after the next."'
+	book_link='https://www.amazon.com/gp/product/0062368591/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0062368591&linkCode=as2&tag=jeffreywest-20&linkId=1e2d6a3fde2eba75e888825ae764fbb8'
+%}
+
+<h2 class="section-heading">References:</h2>
+
+<ol>
+<li><a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022404">Nonlinear adaptive control of competitive release and chemotherapeutic resistance</a></li>
+<li><a href="https://www.biorxiv.org/content/10.1101/476507v4">Towards multi-drug adaptive therapy</a></li>
+<li><a href="https://pubs.acs.org/doi/abs/10.1021/mp200458e">Exploiting Evolution To Treat Drug Resistance: Combination Therapy and the Double Bind</a></li>
+<li><a href="https://www.preprints.org/manuscript/201902.0011/v1">Eradicating Metastatic Cancer and the Evolutionary Dynamics of Extinction</a></li>
+</ol>

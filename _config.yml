@@ -1,0 +1,22 @@
+title:             mathoncbro
+email:             jeffrey.west@moffitt.org
+description:       Jeffrey West's blog
+author:            Jeffrey West
+baseurl:           ""
+url:               "https://jeffreywest.github.io"
+customvar: 				 "custom"
+
+# Social Profiles
+twitter_username:  mathoncbro
+github_username:   jeffreywest
+facebook_username: runningwest
+
+# Build settings
+# default permalink was: permalink: /:categories/:year/:month/:day/:title:output_ext
+permalink: /:title:output_ext
+markdown:          kramdown
+paginate:          10
+paginate_path:     "/posts/page:num/"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate

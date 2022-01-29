@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<!-- Page Header -->
+{% if page.background %}
+  <header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+  {% else %}
+    <header class="masthead">
+    {% endif %}
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <a href="https://twitter.com/mathoncbro"><h1 class="text-white">@{{ site.title }}</h1></a>
+            {% if site.description %}
+              <span class="subheading">{{ site.description }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto article-list">
+
+        
+        
+        <h1>{{ page.tag }}</h1>
+
+				
+				    {% for post in site.tags[page.tag] %}
+					    {% if post.hide %}
+	          	{% else %}
+					    	{% include card_callout.html post=post %}
+								</br>
+								</br>
+							{% endif %}
+				    {% endfor %}
+				
+        
+        
+        
+
+
+      </div>
+    </div>
+  </div>

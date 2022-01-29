@@ -1,0 +1,100 @@
+---
+layout: post
+title:  "Can we afford to ignore the role of space any longer?"
+category: "Research"
+subtitle: "Cancer and pre-cancerous tissue"
+date:   2019-04-08 12:00:00 -0400
+tags: [Spatial Dynamics]
+summary: "A review of recent research."
+author: "Jeffrey West and Ryan O. Schenck"
+---
+	
+A version of this article originally appeared on Ryan O. Schenck's blog, <a href="https://ryanoschenck.com/2019/04/01/can-we-afford-to-ignore-the-role-of-space-in-cancer-and-pre-cancerous-tissue-any-longer/">here</a>.
+
+For those who are interested in agent-based models of cancer, this has been one of the most exciting months of mathematical oncology in recent memory. The purpose of this blog is to summarize the findings of several cancer (and one non-cancer) models. We will attempt to showcase the harmony between these preprints and go on to detail what is still unknown.
+
+First up, a preprint by Kate Chkhaidze called “<a href="https://www.biorxiv.org/content/10.1101/544536v2">Spatially constrained tumour growth affects the patterns of clonal selection and neutral drift in cancer genomic data.</a>” (see figure below).
+
+<img class="post-img" src="{{ '/img/inserts/space1.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 1">
+
+In this paper, Chkhaidze introduces two types of spatially-explicit tumor growth models: boundary-driven (only cells on the edge can proliferate) and homogeneous (all cells can divide). Each model is subjected to sequencing (needle, punch, single cell type biopsies) for both neutral and selective subclonal mutations.
+
+The paper focuses on the sampling bias question: the neutral, boundary-driven case leads to interesting spatial patterns (genetic draft or gene surfing, figure 1C above), and therefore has a high likelihood of sampling bias. Alternatively, certain patterns of growth are easiest to recover, especially when spatial constraints are limited and the number of unknown parameters are lowest. Depending on the spatial growth assumptions (homogeneous vs boundary-driven), measurement bias can artificially increase the apparent selection (depending on sampling type). In other words, some tumors may artificially measure higher on metrics of subclonal selection.
+
+This sampling bias has important implications and requires further examination of mutations within their spatial contexts. When we think about this paper in various tissue types we can see how space makes a massive difference! Our group has recently released two preprints that show effective subclonal selection differences without alterations in cell-specific fitness or mutation rate. The first is in non-cancerous tissue, and the second in premalignant ductal carcinomas.
+
+<h2 class="section-heading">Homeostasis constrains evolution</h2>
+
+In the first preprint, “<a href="https://www.biorxiv.org/content/10.1101/548131v1">Clonal Architecture of the Epidermis: Homeostasis Limits Keratinocyte Evolution</a>,” we show that homeostasis inherent to normal epithelia naturally imposes neutral log-linear subclone size distributions (see schematic below).
+
+<img class="post-img" src="{{ '/img/inserts/space2.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 2">
+
+Oncogenic drivers may still exist in normal tissue, even existing in large numbers! We show that the largest of these subclones must be the oldest subclones. Importantly, mutations in normal skin do not disrupt homeostatic mechanisms, leaving intact the natural architecture and tissue turnover processes.
+
+How did we elucidate the importance of homeostasis as a mechanism for sustained neutrality? While subclones may expand over a lifetime, it is not cell-specific selection in the ‘traditional’ sense. It’s expansion due to persistence, not proliferation. This means simply surviving longer in the right spot at the right time. But again, why this emergent behavior?
+
+The key here is that selection for quickly proliferating clones will lead to the collapse of the tissue. Our 3-dimensional agent-based model constructed to represent the tissue architecture of a homeostatic epidermis recapitulates important homeostatic behaviors. Certain modes of evolution simply are not tolerated within this homeostatic tissue architecture, without additionally facilitating the complete destruction of tissue. In this way, any clonal expansion is limited by the fitness advantage it has over its neighbors.
+
+<h2 class="section-heading">Tissue architecture & effective selection</h2>
+
+It’s clear that spatial constraints can no longer be ignored in the discussion of tissue evolution, normal or cancerous. More nuance is required when interpreting our model results. A second preprint from our group, titled “<a href="https://www.biorxiv.org/content/10.1101/542019v1">Tissue structure accelerates evolution: premalignant sweeps precede neutral expansion</a>,” quantifies how spatial constraints alter the evolutionary trajectory of a single tumor.
+
+One case where spatial constraints play a role is pre-malignant ductal carcinoma growth. These growths may initiate at various points within the ductal network (and thus, various degrees of spatial constraints). Tumors initiated in smaller, tightly constrained ducts impose a strong negative selection on weaker subclones, enabling faster sweeping of new, fitter clones (i.e. Darwinian evolution). Conversely, tumors initiated in larger, less constrained ducts are driven by neutral evolutionary mode, all without changes in cell-specific fitness.
+
+<img class="post-img" src="{{ '/img/inserts/space3.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 3">
+
+In a fun experiment, we simulated identical cell-specific parameters in a few additional settings: 3-dimensional spheroids, 2-dimensional circles, and non-spatial models. Below, we show tumor evolution on a neutral (x-axis) and Darwinian (y-axis) plane. Tumor evolutionary trajectories for 3-dimensional spheroids are more neutral (left-to-right) – and almost overlapping with non-spatial models! It’s initially quite jarring, but it makes some sense, as cells on a 2-dimensional lattice have less free-space to divide than their 3-dimensional counterparts.
+
+<img class="post-img" src="{{ '/img/inserts/space4.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 4">
+
+<h2 class="section-heading">Seeding spatial models</h2>
+
+In each of these cases, the important result may have been lost without spatially-explicit models. In a non-spatial setting, fitter clones may rarely be constrained from expanding, with significant genetic hitch-hikers. Contrasting that to a spatial setting where many fitter clones may indeed exist – but are unable to sweep. In some cases, space may actually help the sweeping by enabling a Goldilocks zone of cellular mixing and negative selection allowing expansion and sweeping to occur simultaneously.
+
+We’ve also taken steps to show that important transient behavior may be lost without considering space. In another preprint, “<a href="https://www.biorxiv.org/content/10.1101/594598v1">Macrophage-mediated immunoediting drives ductal carcinoma evolution: Space is the game changer</a>,” we have explicitly compared differences between non-spatial game theoretic models with spatially-explicit formulations.
+
+<img class="post-img" src="{{ '/img/inserts/space5.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 5">
+
+Seeded from immunohistochemistry imaging data of ductal carinomas (see above), the model tracks the evolution of various immune escape strategies which we classify into three broad categories: immunoevasion (blue), immunoresistance (red), and immunosuppression (yellow), all invading into normal stroma (purple).
+
+We learned two things: macrophages are an important ‘public good’ in facilitating invasion, but lose importance after invasion when dynamics are mainly driven by stromal interactions. Second, we learned of a self-assorting engineer-pioneer dynamic of two immunoediting strategies (suppressive and resistant). The first of these conclusions may have been elucidated by the non-spatial modeling, but the second is entirely lost without spatially explicit modeling frameworks!
+
+<h2 class="section-heading">Space is really important</h2>
+
+If you’re keeping track, we have attributed responsibility to the spatial tissue architecture for four phenomena:
+
+<ul>
+<li>introducing measurement bias in 2-dimensional tissues</li>
+<li>limiting fitness/selection in 3-dimensional homeostatic tissue</li>
+<li>increasing effective subclonal selection in 3-dimensional ductal carcinomas</li>
+<li>facilitating self-assortment of cooperating phenotypes</li>
+</ul>
+
+The consolidation of many of these ideas is found in a 4th preprint from this month, called “<a href="https://www.biorxiv.org/content/10.1101/586735v1">Spatial structure governs the mode of tumour evolution</a>.” In it, Noble et. al. propose four archetypal “oncoevotypes,” or evolutionary modes of tumor growth. They are 1) rapid clonal expansion (leukaemia), 2) progressive diversification (colorectal adenomas & early-stage colorectal carcinomas), 3) branching evolution (invasive glandular tumours), 4) nearly neutral evolution (non-glandular & poorly differentiated solid tumours).
+
+Their hypothesis is that differences in the mode of evolution can be explained by differences in tumor architecture (i.e. differences in cell dispersal and cell-cell interactions). The work represents an impressive display of 4 different types of (non)-spatial agent-based modeling approaches, all tied back to some biological reality in cancer. In the preprint’s exciting conclusion, they note that certain oncoevotypes can lead to the straight lines characteristic of ‘neutrality’ even if subclonal mutations are not neutral (see figure below: blue lines are neutral, red includes subclonal selection).
+
+<img class="post-img" src="{{ '/img/inserts/space6.png'  | prepend: site.baseurl | replace: '//', '/' }}" alt="Image 6">
+
+Here, we might try to sum up what we have learned: the choice of model should be heavily influenced by the mode of evolution of the biological system of study. We also need unified metrics. The best metrics are ones that can easily compare model outputs directly to data. On the other hand, this is where modeling can shine: showing that data can be recapitulated by several models or parameter combinations.
+
+This is where the heart of the neutral debate lies: isn’t the simplest explanation the most likely? Perhaps we are biased, but we believe that this discussion on neutrality may not have been initiated without the aid of mathematical modeling and will continue to prove to be a critical component to continue answering questions where data resolution is not there or not yet possible to obtain.
+
+
+{% include books.html
+	book_author='James DeGregori'
+	book_title='Adaptive Oncogenesis'
+	book_img='/img/books/adaptiveonco.png'
+	book_desc='Popular understanding holds that genetic changes create cancer. James DeGregori uses evolutionary principles to propose a new way of thinking about cancer’s occurrence. Cancer is as much a disease of evolution as it is of mutation, one in which mutated cells outcompete healthy cells in the ecosystem of the body’s tissues.'
+	book_link='https://www.amazon.com/gp/product/0674545397/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0674545397&linkCode=as2&tag=jeffreywest-20&linkId=fc2ff9f497ca45cf972c69ccb0426a17'
+%}
+
+<h2 class="section-heading">References:</h2>
+
+<ol>
+<li>Spatially constrained tumour growth affects the patterns of clonal selection and neutral drift in cancer genomic data. <a href="https://www.biorxiv.org/content/10.1101/544536v2">https://www.biorxiv.org/content/10.1101/544536v2</a></li>
+<li>Tissue structure accelerates evolution: premalignant sweeps precede neutral expansion. <a href="https://www.biorxiv.org/content/10.1101/542019v1">https://www.biorxiv.org/content/10.1101/542019v1</a></li>
+<li>Clonal Architecture of the Epidermis: Homeostasis Limits Keratinocyte Evolution. <a href="https://www.biorxiv.org/content/10.1101/548131v1">https://www.biorxiv.org/content/10.1101/548131v1</a></li>
+<li>Spatial structure governs the mode of tumour evolution. <a href="https://www.biorxiv.org/content/10.1101/586735v1">https://www.biorxiv.org/content/10.1101/586735v1</a></li>
+<li>Macrophage-mediated immunoediting drives ductal carcinoma evolution: Space is the game changer. <a href="https://www.biorxiv.org/content/10.1101/594598v1">https://www.biorxiv.org/content/10.1101/594598v1</a></li>
+</ol>
